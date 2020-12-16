@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -9,7 +11,7 @@ import Upload from '../../components/Upload';
 
 import { Container, Title, ImportFileContainer, Footer } from './styles';
 
-import alert from '../../assets/alert.svg';
+import alertImg from '../../assets/alert.svg';
 import api from '../../services/api';
 
 interface FileProps {
@@ -24,6 +26,10 @@ const Import: React.FC = () => {
 
   async function handleUpload(): Promise<void> {
     const data = new FormData();
+
+    if (!uploadedFiles.length) {
+      return alert('Selecione um Arquivo');
+    }
 
     data.append('file', uploadedFiles[0].file, uploadedFiles[0].name);
     console.log(uploadedFiles);
@@ -58,7 +64,7 @@ const Import: React.FC = () => {
 
           <Footer>
             <p>
-              <img src={alert} alt="Alert" />
+              <img src={alertImg} alt="Alert" />
               Permitido apenas arquivos CSV
             </p>
             <button onClick={handleUpload} type="button">
