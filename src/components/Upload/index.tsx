@@ -6,7 +6,7 @@ import { DropContainer, UploadMessage } from './styles';
 interface UploadProps {
   onUpload: Function;
 }
-
+// Dropzone Verifica se o tipo é valido
 const Upload: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
   function renderDragMessage(
     isDragActive: boolean,
